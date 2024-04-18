@@ -24,11 +24,11 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(String id, String title, String body, boolean isComplete, Date date, Date endline, AuthorDTO author) {
+    public Task(String id, String title, String body, Date date, Date endline, AuthorDTO author) {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.isComplete = isComplete;
+        this.isComplete = false;
         this.date = date;
         this.endline = endline;
         this.author = author;

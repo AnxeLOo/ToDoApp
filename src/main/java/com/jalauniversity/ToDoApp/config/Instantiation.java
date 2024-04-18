@@ -37,11 +37,12 @@ public class Instantiation implements CommandLineRunner{
         
         userRepo.saveAll(Arrays.asList(igor, bruno, carlos));
 
-        Task task1 = new Task(null,"Projeto Final", "Finalizar o projeto final de Banco de Dados 2", false, sdf.parse("17/04/2024"), sdf.parse("21/04/2024"), new AuthorDTO(igor));
-        Task task2 = new Task(null,"Teste Final de Inglês", "Realizar a avaliação final de inglês", false, sdf.parse("17/04/2024"), sdf.parse("21/04/2024"), new AuthorDTO(igor));
+        Task task1 = new Task(null,"Projeto Final", "Finalizar o projeto final de Banco de Dados 2", sdf.parse("17/04/2024"), sdf.parse("21/04/2024"), new AuthorDTO(igor));
+        Task task2 = new Task(null,"Teste Final de Inglês", "Realizar a avaliação final de inglês", sdf.parse("17/04/2024"), sdf.parse("21/04/2024"), new AuthorDTO(igor));
 
         taskRepo.saveAll(Arrays.asList(task1, task2));
+    
+        igor.getTasks().addAll(Arrays.asList(task1, task2));
+        userRepo.save(igor);
     }
-
-
 }
