@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.jalauniversity.ToDoApp.domain.Task;
 import com.jalauniversity.ToDoApp.domain.User;
+import com.jalauniversity.ToDoApp.dto.AuthorDTO;
 import com.jalauniversity.ToDoApp.repository.TaskRepository;
 import com.jalauniversity.ToDoApp.repository.UserRepository;
 
@@ -33,11 +34,12 @@ public class Instantiation implements CommandLineRunner{
         User igor = new User(null, "Igor Bueno", "igor.bueno@jala.university");
         User bruno = new User(null, "Bruno Pedroso", "bruno.pedroso@jala.university");
         User carlos = new User(null, "Carlos Furtado", "carlos.furtado@jala.university");
-
-        Task task1 = new Task(null,"Projeto Final", "Finalizar o projeto final de Banco de Dados 2", false, sdf.parse("17/04/2024"), sdf.parse("21/04/2024"), igor);
-        Task task2 = new Task(null,"Teste Final de Inglês", "Realizar a avaliação final de inglês", false, sdf.parse("17/04/2024"), sdf.parse("21/04/2024"), igor);
-
+        
         userRepo.saveAll(Arrays.asList(igor, bruno, carlos));
+
+        Task task1 = new Task(null,"Projeto Final", "Finalizar o projeto final de Banco de Dados 2", false, sdf.parse("17/04/2024"), sdf.parse("21/04/2024"), new AuthorDTO(igor));
+        Task task2 = new Task(null,"Teste Final de Inglês", "Realizar a avaliação final de inglês", false, sdf.parse("17/04/2024"), sdf.parse("21/04/2024"), new AuthorDTO(igor));
+
         taskRepo.saveAll(Arrays.asList(task1, task2));
     }
 

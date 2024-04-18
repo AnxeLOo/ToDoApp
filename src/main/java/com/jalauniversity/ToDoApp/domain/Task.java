@@ -6,6 +6,8 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.jalauniversity.ToDoApp.dto.AuthorDTO;
+
 @Document(collection = "tasks")
 public class Task implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -17,12 +19,12 @@ public class Task implements Serializable {
     private boolean isComplete;
     private Date date;
     private Date endline;
-    private User author;
+    private AuthorDTO author;
 
     public Task() {
     }
 
-    public Task(String id, String title, String body, boolean isComplete, Date date, Date endline, User author) {
+    public Task(String id, String title, String body, boolean isComplete, Date date, Date endline, AuthorDTO author) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -109,11 +111,11 @@ public class Task implements Serializable {
         this.endline = endline;
     }
 
-    public User getAuthor() {
+    public AuthorDTO getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AuthorDTO author) {
         this.author = author;
     }
 }
