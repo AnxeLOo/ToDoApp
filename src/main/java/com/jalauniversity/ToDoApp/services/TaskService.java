@@ -1,5 +1,6 @@
 package com.jalauniversity.ToDoApp.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,9 @@ public class TaskService {
     public Task findById(String id) {
         Optional<Task> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+
+    public List<Task> findByTitle(String text) {
+        return repo.findByTitleContainingIgnoreCase(text);
     }
 }
