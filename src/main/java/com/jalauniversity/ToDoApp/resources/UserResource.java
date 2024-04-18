@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.jalauniversity.ToDoApp.domain.Task;
 import com.jalauniversity.ToDoApp.domain.User;
 import com.jalauniversity.ToDoApp.dto.UserDTO;
 import com.jalauniversity.ToDoApp.services.UserService;
@@ -61,4 +62,9 @@ public class UserResource {
         return ResponseEntity.noContent().build();
     }
 
+    @RequestMapping(value = "/{id}/tasks", method = RequestMethod.GET)
+    public ResponseEntity<List<Task>> findTasks(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getTasks());
+    }
 }
