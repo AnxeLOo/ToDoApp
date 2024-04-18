@@ -11,4 +11,5 @@ import com.jalauniversity.ToDoApp.domain.Task;
 public interface TaskRepository extends MongoRepository<Task, String>{
 
     List<Task> findByTitleContainingIgnoreCase(String text);
+    List<Task> findByStatus(String status);
 }

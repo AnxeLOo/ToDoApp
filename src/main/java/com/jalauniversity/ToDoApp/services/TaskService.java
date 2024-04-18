@@ -24,4 +24,8 @@ public class TaskService {
     public List<Task> findByTitle(String text) {
         return repo.findByTitleContainingIgnoreCase(text);
     }
+
+    public List<Task> findByStatus(String status) {
+        return repo.findByStatus(status);
+    }
 }

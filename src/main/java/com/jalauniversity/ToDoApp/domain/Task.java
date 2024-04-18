@@ -16,7 +16,7 @@ public class Task implements Serializable {
     private String id;
     private String title;
     private String body;
-    private boolean isComplete;
+    private String status;
     private Date date;
     private Date endline;
     private AuthorDTO author;
@@ -28,7 +28,7 @@ public class Task implements Serializable {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.isComplete = false;
+        this.status = "incompleto";
         this.date = date;
         this.endline = endline;
         this.author = author;
@@ -87,12 +87,12 @@ public class Task implements Serializable {
         this.body = body;
     }
 
-    public boolean isComplete() {
-        return isComplete;
+    public String getStatus() {
+        return status;
     }
 
-    public void setComplete(boolean isComplete) {
-        this.isComplete = isComplete;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Date getDate() {

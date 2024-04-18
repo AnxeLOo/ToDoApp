@@ -27,10 +27,17 @@ public class TaskResource {
         return ResponseEntity.ok().body(obj);
     }
     
-    @RequestMapping(value = "/titleseach", method = RequestMethod.GET)
+    @RequestMapping(value = "/titlesearch", method = RequestMethod.GET)
     public ResponseEntity<List<Task>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
         text = URL.decodeParam(text);
         List<Task> list = service.findByTitle(text);
+        return ResponseEntity.ok().body(list);
+    }
+
+    @RequestMapping(value = "/statussearch", method = RequestMethod.GET)
+    public ResponseEntity<List<Task>> findByStatus(@RequestParam(value = "text", defaultValue = "") String text) {
+        text = URL.decodeParam(text);
+        List<Task> list = service.findByStatus(text);
         return ResponseEntity.ok().body(list);
     }
 }
