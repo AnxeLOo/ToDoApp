@@ -22,6 +22,21 @@ public class TaskService {
         return repo.insert(obj);
     }
 
+    public Task update(Task obj) {
+        Task newObj = findById(obj.getId());
+        updateData(newObj, obj);
+        return repo.save(newObj);
+    }
+
+    private void updateData(Task newObj, Task obj) {
+        newObj.setTitle(obj.getTitle());
+        newObj.setBody(obj.getBody());
+        newObj.setStatus(obj.getStatus());
+        newObj.setDate(obj.getDate());
+        newObj.setEndline(obj.getEndline());
+        newObj.setAuthor(obj.getAuthor());
+    }
+
     public Task findById(String id) {
         Optional<Task> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));

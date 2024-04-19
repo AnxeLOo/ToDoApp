@@ -49,6 +49,17 @@ public class TaskResource {
 		return ResponseEntity.created(uri).build();
     }
 
+    @RequestMapping(value = "/{taskId}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@PathVariable String userId, @PathVariable String taskId, @RequestBody TaskDTO objDto) {
+        User userObj = userService.findById(userId);
+        
+        Task taskObj = taskService.fromDTO(objDto, new AuthorDTO(userObj));
+        taskObj.setId(taskId);
+        taskObj = taskService.update(taskObj);
+        
+		return ResponseEntity.noContent().build();
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Task> findById(@PathVariable String id) {
         Task obj = taskService.findById(id);
