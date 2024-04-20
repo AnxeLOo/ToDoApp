@@ -26,25 +26,13 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(String id, String title, String body, Date endline, AuthorDTO author) {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-
-        this.id = id;
-        this.title = title;
-        this.body = body;
-        this.status = "incompleto";
-        this.date = Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant());;
-        this.endline = endline;
-        this.author = author;
-    }
-
     public Task(String id, String title, String body, String status, Date endline, AuthorDTO author) {
         LocalDateTime currentDateTime = LocalDateTime.now();
 
         this.id = id;
         this.title = title;
         this.body = body;
-        this.status = status;
+        this.status = (status != null && !status.isEmpty()) ? status : "incompleto";
         this.date = Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant());;
         this.endline = endline;
         this.author = author;

@@ -28,21 +28,21 @@ public class Instantiation implements CommandLineRunner{
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        userRepo.deleteAll();
-        taskRepo.deleteAll();
+        // userRepo.deleteAll();
+        // taskRepo.deleteAll();
 
-        User igor = new User(null, "Igor Bueno", "igor.bueno@jala.university");
-        User bruno = new User(null, "Bruno Pedroso", "bruno.pedroso@jala.university");
-        User carlos = new User(null, "Carlos Furtado", "carlos.furtado@jala.university");
+        // User igor = new User(null, "Igor Bueno", "igor.bueno@jala.university");
+        // User bruno = new User(null, "Bruno Pedroso", "bruno.pedroso@jala.university");
+        // User carlos = new User(null, "Carlos Furtado", "carlos.furtado@jala.university");
         
-        userRepo.saveAll(Arrays.asList(igor, bruno, carlos));
+        // userRepo.saveAll(Arrays.asList(igor, bruno, carlos));
 
-        Task task1 = new Task(null,"Projeto Final", "Finalizar o projeto final de Banco de Dados 2", sdf.parse("17/04/2024"), new AuthorDTO(igor));
-        Task task2 = new Task(null,"Teste Final de Inglês", "Realizar a avaliação final de inglês", sdf.parse("17/04/2024"), new AuthorDTO(igor));
+        // Task task1 = new Task(null,"Projeto Final", "Finalizar o projeto final de Banco de Dados 2", sdf.parse("17/04/2024"), new AuthorDTO(igor));
+        // Task task2 = new Task(null,"Teste Final de Inglês", "Realizar a avaliação final de inglês", sdf.parse("17/04/2024"), new AuthorDTO(igor));
 
-        taskRepo.saveAll(Arrays.asList(task1, task2));
+        // taskRepo.saveAll(Arrays.asList(task1, task2));
     
-        igor.getTasks().addAll(Arrays.asList(task1, task2));
-        userRepo.save(igor);
+        // igor.getTasks().addAll(Arrays.asList(task1, task2));
+        // userRepo.save(igor);
     }
 }
