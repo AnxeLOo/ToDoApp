@@ -1,6 +1,8 @@
 package com.jalauniversity.ToDoApp.models;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -24,12 +26,26 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(String id, String title, String body, Date date, Date endline, AuthorDTO author) {
+    public Task(String id, String title, String body, Date endline, AuthorDTO author) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
         this.id = id;
         this.title = title;
         this.body = body;
         this.status = "incompleto";
-        this.date = date;
+        this.date = Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant());;
+        this.endline = endline;
+        this.author = author;
+    }
+
+    public Task(String id, String title, String body, String status, Date endline, AuthorDTO author) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.status = status;
+        this.date = Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant());;
         this.endline = endline;
         this.author = author;
     }

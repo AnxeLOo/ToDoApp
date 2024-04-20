@@ -32,7 +32,6 @@ public class TaskService {
         newObj.setTitle(obj.getTitle());
         newObj.setBody(obj.getBody());
         newObj.setStatus(obj.getStatus());
-        newObj.setDate(obj.getDate());
         newObj.setEndline(obj.getEndline());
         newObj.setAuthor(obj.getAuthor());
     }
@@ -56,6 +55,6 @@ public class TaskService {
     }
 
     public Task fromDTO(TaskDTO objDto, AuthorDTO userObj) {
-        return new Task(objDto. getId(), objDto.getTitle(), objDto.getBody(), objDto.getDate(), objDto.getEndline(), userObj);
+        return new Task(objDto. getId(), objDto.getTitle(), objDto.getBody(), objDto.getStatus(), objDto.getEndline(), userObj);
     }
 }

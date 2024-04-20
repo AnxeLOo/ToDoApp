@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-public class LoginController {
+public class PageController {
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login() {
-        return "login";
+        return "index";
     }
 }

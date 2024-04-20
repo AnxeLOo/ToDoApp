@@ -17,11 +17,11 @@ public class TaskDTO implements Serializable{
     public TaskDTO() {
     }
 
-    public TaskDTO(String id, String title, String body, Date date, Date endline, AuthorDTO author) {
+    public TaskDTO(String id, String title, String body, String status, Date date, Date endline, AuthorDTO author) {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.status = "incompleto";
+        this.status = status;
         this.date = date;
         this.endline = endline;
         this.author = author;
