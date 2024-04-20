@@ -15,7 +15,7 @@ public class User implements Serializable{
     @Id
     private String id;
     private String username;
-    private String email;
+    private String password;
 
     @DBRef(lazy = true)
     private List<Task> tasks = new ArrayList<>();
@@ -23,10 +23,10 @@ public class User implements Serializable{
     public User(){
     }
 
-    public User(String id, String username, String email) {
+    public User(String id, String username, String password) {
         this.id = id;
         this.username = username;
-        this.email = email;
+        this.password = password;
     }
 
     public String getId() {
@@ -45,12 +45,12 @@ public class User implements Serializable{
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Task> getTasks() {

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.jalauniversity.ToDoApp.dto.UserDTO;
@@ -16,6 +17,9 @@ public class UserService {
     @Autowired
     private UserRepository repo;
 
+    @Autowired
+    private PasswordEncoder pwEncoder;
+
     public List<User> findAll() {
         return repo.findAll();
     }
@@ -23,6 +27,17 @@ public class UserService {
     public User findById(String id) {
         Optional<User> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+    
+    public User findByUsername(String username) {
+        User obj = repo.findByUsername(username);
+        if (obj == null) throw new ObjectNotFoundException("Objeto não encontrado");
+        return obj;
+    }
+
+    public User login(UserDTO obj) {
+        User user = repo.findByUsername(obj.getUsername());
+        return (user != null && pwEncoder.matches(obj.getPassword(), user.getPassword())) ? user : null;
     }
 
     public User insert(User obj) {
@@ -42,10 +57,10 @@ public class UserService {
 
     private void updateData(User newObj, User obj) {
         newObj.setUsername(obj.getUsername());
-        newObj.setEmail(obj.getEmail());
+        newObj.setPassword(obj.getPassword());
     }
 
     public User fromDTO(UserDTO objDto) {
-        return new User(objDto. getId(), objDto.getUsername(), objDto.getEmail());
+        return new User(objDto. getId(), objDto.getUsername(), pwEncoder.encode(objDto.getPassword()));
     }
 }

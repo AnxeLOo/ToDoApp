@@ -23,7 +23,7 @@ import com.jalauniversity.ToDoApp.services.TaskService;
 import com.jalauniversity.ToDoApp.services.UserService;
 
 @RestController
-@RequestMapping(value = "/users/{userId}/tasks")
+@RequestMapping(value = "/user/{userId}/tasks")
 public class TaskController {
 
     @Autowired

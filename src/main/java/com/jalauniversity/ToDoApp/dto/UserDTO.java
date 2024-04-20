@@ -9,15 +9,15 @@ public class UserDTO implements Serializable{
 
     private String id;
     private String username;
-    private String email;
+    private String password;
 
     public UserDTO() {
     }
 
     public UserDTO(User obj) {
-        id = obj.getId();
-        username = obj.getUsername();
-        email = obj.getEmail();
+        this.id = obj.getId();
+        this.username = obj.getUsername();
+        this.password = obj.getPassword();
     }
 
     public String getId() {
@@ -36,11 +36,13 @@ public class UserDTO implements Serializable{
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+    
 }

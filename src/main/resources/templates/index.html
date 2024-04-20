@@ -12,6 +12,44 @@
 </head>
 <body>
 
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title center" id="task-modal-label">TO-DO LIST</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <h6>Faça login</h6>
+                        <label for="title">Usuário</label>
+                        <!--  -->
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Faça login</h6>
+                        <label for="title">Senha</label>
+                        <div class="form-control">
+                            <input type="text" id="pass">
+                        </div>
+                    </div>
+
+                    <div class="alert-message" style="display: none;">
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Erro!</strong> Preencha pelo menos Título e Descrição.
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE DELETAR -->
     <div class="modal fade" id="delete-task" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -29,7 +67,7 @@
         </div>
     </div>
 
-
+    <!-- MODAL DE CRIAR/ALTERAR -->
     <div class="modal fade" id="create-task" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
