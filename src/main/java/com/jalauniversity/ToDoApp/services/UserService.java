@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jalauniversity.ToDoApp.domain.User;
 import com.jalauniversity.ToDoApp.dto.UserDTO;
+import com.jalauniversity.ToDoApp.models.User;
 import com.jalauniversity.ToDoApp.repository.UserRepository;
 import com.jalauniversity.ToDoApp.services.exception.ObjectNotFoundException;
 

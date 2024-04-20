@@ -2,7 +2,7 @@ package com.jalauniversity.ToDoApp.dto;
 
 import java.io.Serializable;
 
-import com.jalauniversity.ToDoApp.domain.User;
+import com.jalauniversity.ToDoApp.models.User;
 
 public class AuthorDTO implements Serializable {
     private static final long serialVersionUID = 1L;

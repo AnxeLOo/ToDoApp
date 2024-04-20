@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import com.jalauniversity.ToDoApp.domain.Task;
-import com.jalauniversity.ToDoApp.domain.User;
 import com.jalauniversity.ToDoApp.dto.AuthorDTO;
+import com.jalauniversity.ToDoApp.models.Task;
+import com.jalauniversity.ToDoApp.models.User;
 import com.jalauniversity.ToDoApp.repository.TaskRepository;
 import com.jalauniversity.ToDoApp.repository.UserRepository;
 

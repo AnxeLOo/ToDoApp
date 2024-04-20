@@ -1,4 +1,4 @@
-package com.jalauniversity.ToDoApp.domain;
+package com.jalauniversity.ToDoApp.models;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.jalauniversity.ToDoApp.resources.exception;
+package com.jalauniversity.ToDoApp.controller.exception;
 
 import java.io.Serializable;
 

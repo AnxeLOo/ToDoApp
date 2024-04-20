@@ -1,4 +1,4 @@
-package com.jalauniversity.ToDoApp.resources;
+package com.jalauniversity.ToDoApp.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.jalauniversity.ToDoApp.domain.Task;
-import com.jalauniversity.ToDoApp.domain.User;
 import com.jalauniversity.ToDoApp.dto.UserDTO;
+import com.jalauniversity.ToDoApp.models.Task;
+import com.jalauniversity.ToDoApp.models.User;
 import com.jalauniversity.ToDoApp.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserController {
 
     @Autowired
     private UserService service;

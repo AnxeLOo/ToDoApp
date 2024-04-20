@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jalauniversity.ToDoApp.domain.Task;
 import com.jalauniversity.ToDoApp.dto.AuthorDTO;
 import com.jalauniversity.ToDoApp.dto.TaskDTO;
+import com.jalauniversity.ToDoApp.models.Task;
 import com.jalauniversity.ToDoApp.repository.TaskRepository;
 import com.jalauniversity.ToDoApp.services.exception.ObjectNotFoundException;
 
