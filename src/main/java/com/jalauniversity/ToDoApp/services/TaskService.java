@@ -42,6 +42,11 @@ public class TaskService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
+    public void delete(String id) {
+        findById(id);
+        repo.deleteById(id);
+    }
+
     public List<Task> findByTitle(String text) {
         return repo.findByTitleContainingIgnoreCase(text);
     }

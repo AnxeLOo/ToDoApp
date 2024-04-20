@@ -60,6 +60,12 @@ public class TaskController {
 		return ResponseEntity.noContent().build();
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        taskService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Task> findById(@PathVariable String id) {
         Task obj = taskService.findById(id);
