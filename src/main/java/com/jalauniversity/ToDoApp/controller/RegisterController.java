@@ -3,6 +3,7 @@ package com.jalauniversity.ToDoApp.controller;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +22,15 @@ public class RegisterController {
     private UserService service;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> register(@RequestBody UserDTO objDto) {
-        User obj = service.fromDTO(objDto);
-        obj = service.insert(obj);
-        
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-    }
+    public ResponseEntity<?> register(@RequestBody UserDTO objDto) {
+        if (service.findByUsername(objDto.getUsername()) != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"status\": \"error\", \"message\": \"usuario já existente\"}");
+        }
 
+        User user = service.fromDTO(objDto);
+        user = service.insert(user);
+        
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+         return ResponseEntity.ok("{\"status\": \"ok\", \"message\": \"" + user.getId() + "\"}");
+    }
 }

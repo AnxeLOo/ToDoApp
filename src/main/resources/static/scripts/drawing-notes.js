@@ -1,5 +1,5 @@
 async function drawNotes() {
-    const user_id = '66232b0cddfe80330cc5e60e';
+    const user_id = localStorage.getItem('user_id');
     const notes = await getTasks(user_id);
 
     $('#cards-container .container').html('');

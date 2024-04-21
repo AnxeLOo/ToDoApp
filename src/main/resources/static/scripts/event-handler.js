@@ -1,6 +1,8 @@
-function openModal(modalName, callback) {
+function openModal(modalName, callback = function() {}) {
     $(`.modal#${modalName}`).modal(`show`);
-    $(`.modal#${modalName} button#yes`)[0].onclick = callback;
+    try {
+        $(`.modal#${modalName} button#yes`)[0].onclick = callback;
+    } catch (e) {}
 }
 function closeModal(modalName) {
     $(`.modal#${modalName}`).modal(`hide`);
@@ -11,7 +13,7 @@ function closeModal(modalName) {
 function deleteNote(noteId) {
     modalName = 'delete-task';
 
-    const user_id = '66232b0cddfe80330cc5e60e';
+    const user_id = localStorage.getItem('user_id');
     openModal(modalName, function() {
         deleteTask(user_id, noteId);
         closeModal(modalName);
@@ -22,7 +24,7 @@ function deleteNote(noteId) {
 
 function createNote() {
     const modalName = 'create-task';
-    const user_id = '66232b0cddfe80330cc5e60e';
+    const user_id = localStorage.getItem('user_id');
 
     $(`.modal#${modalName} .done-box`).css('display', 'none');
     $(`.modal#${modalName} button#yes`).html('Criar Nota');
@@ -60,7 +62,7 @@ function createNote() {
 
 function updateNote(noteId, title, body, endline, done) {
     const modalName = 'create-task';
-    const user_id = '66232b0cddfe80330cc5e60e';
+    const user_id = localStorage.getItem('user_id');
 
 
     $(`.modal#${modalName} .done-box`).css('display', 'flex');

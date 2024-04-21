@@ -30,14 +30,7 @@ public class UserService {
     }
     
     public User findByUsername(String username) {
-        User obj = repo.findByUsername(username);
-        if (obj == null) throw new ObjectNotFoundException("Objeto não encontrado");
-        return obj;
-    }
-
-    public User login(UserDTO obj) {
-        User user = repo.findByUsername(obj.getUsername());
-        return (user != null && pwEncoder.matches(obj.getPassword(), user.getPassword())) ? user : null;
+        return repo.findByUsername(username);
     }
 
     public User insert(User obj) {

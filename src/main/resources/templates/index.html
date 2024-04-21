@@ -12,37 +12,59 @@
 </head>
 <body>
 
-    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" data-type="auth" id="login" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title center" id="task-modal-label">TO-DO LIST</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title w-100 text-center" id="auth-form-label">
+                        <span class="auth-text">FAÇA LOGIN</span>
+                        <span class="register-text">CADASTRE SUA CONTA</span>
+                    </h5>
                 </div>
 
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <h6>Faça login</h6>
-                        <label for="title">Usuário</label>
-                        <!--  -->
+                        <label for="username">Usuário</label>
+                        <div class="input-group">
+                            <span class="input-group-text material-symbols-outlined" id="basic-addon1">person</span>
+                            <input type="text" class="form-control" id="username" aria-describedby="basic-addon1">
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <h6>Faça login</h6>
-                        <label for="title">Senha</label>
-                        <div class="form-control">
-                            <input type="text" id="pass">
+                        <label for="password">Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text material-symbols-outlined" id="basic-addon1">lock</span>
+                            <input type="password" id="password" class="form-control" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+                    <div class="form-group register-text">
+                        <label for="password">Confirme sua senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text material-symbols-outlined" id="basic-addon1">lock</span>
+                            <input type="password" id="password_confirmation" class="form-control" aria-describedby="basic-addon1">
                         </div>
                     </div>
 
                     <div class="alert-message" style="display: none;">
                         <div class="alert alert-danger" role="alert">
-                            <strong>Erro!</strong> Preencha pelo menos Título e Descrição.
+                            <strong>Erro!</strong> <span id="error-message"></span>
                         </div>
                     </div>
+
+                    <hr>
+
+                    <a class="change-link" style="cursor: pointer;" onclick="changeAuthForm()">
+                        <span class="auth-text">Não tem uma conta? Cadastre-se</span>
+                        <span class="register-text">Já tem uma conta? Faça login</span>
+                    </a>
+
+                    <button class="btn btn-light w-100 mt-3" id="login" onclick="authAction()">
+                        <span class="auth-text">Entrar</span>
+                        <span class="register-text">Cadastrar</span>
+                    </button>
                     
                 </div>
             </div>
@@ -119,6 +141,7 @@
 
         <div class="action-buttons">
             <span title="Criar Nota" onclick="createNote()" class="add-task-button material-symbols-outlined">add_circle</span>
+            <span title="Sair" onclick="logout()" class="logout-button material-symbols-outlined">exit_to_app</span>
         </div>
     </header>
 
@@ -135,12 +158,13 @@
     
     <script src="/scripts/api-handler.js"></script>
     <script src="/scripts/event-handler.js"></script>
+    <script src="/scripts/auth.js"></script>
     <script src="/scripts/drawing-notes.js"></script>
 
     <script>
 
         $(document).ready(function() {
-            drawNotes();
+            localStorage.getItem('user_id') ? drawNotes() : openModal('login');
         });
 
     </script>

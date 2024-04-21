@@ -13,6 +13,11 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+hr {
+    border: 0;
+    border-top: 1px solid #666666;
+}
+
 
 
 
@@ -30,6 +35,8 @@ header {
     }
 
     .action-buttons {
+        display: flex;
+        gap: 1rem;
         color: #f1f1f1;
         cursor: pointer;
         font-weight: 500;
@@ -37,6 +44,10 @@ header {
 
         &:hover {
             color: #929292;
+        }
+
+        .logout-button {
+            color: #f12e20;
         }
     }
 }
@@ -132,6 +143,9 @@ header {
 }
 
 
+
+/* EXTRAS */
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -139,6 +153,9 @@ header {
   'GRAD' 0,
   'opsz' 24
 }
+
+
+/* MODAL */
 
 .modal-content {
     background-color: #303030 !important;
@@ -163,5 +180,19 @@ header {
     label {
         user-select: none;
         margin: 0;
+    }
+}
+
+
+
+
+.modal#login[data-type="auth"] {
+    .register-text {
+        display: none;
+    }
+}
+.modal#login[data-type="register"] {
+    .auth-text {
+        display: none;
     }
 }
